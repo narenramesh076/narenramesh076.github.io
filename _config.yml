@@ -1,6 +1,6 @@
-title: Minimal theme
-logo: /assets/img/logo.png
-description: Minimal is a theme for GitHub Pages.
-show_downloads: true
+title: Naren Ramesh
+logo: /assets/img/naren_logo_2.jpeg
+description: The projects and ideas of Naren Ramesh; undergraduate student at the University of Toronto.
+show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
