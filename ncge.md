@@ -4,6 +4,83 @@ layout: default
 
 # Non-commutative gaussian elimination (from the course "groups, rings and fields" - taught by Prof. Dror Bar-Natan)
 
+<div id="rubiks-net-wrapper" style="font-family: sans-serif; max-width: 600px; margin: 30px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+  <h3 style="margin-top: 0; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px;">NCGE Rubik's Cube Numbering (1-54)</h3>
+  <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 25px; line-height: 1.5;">
+    This 2D net shows how the 54 stickers are mapped to natural numbers. <br>
+    <em>Notice how the Front (White) face contains stickers 13-15, 22-24, and 31-33.</em>
+  </p>
+  
+  <div id="rubiks-grid" style="display: grid; grid-template-columns: repeat(3, 90px); grid-template-rows: repeat(4, 110px); gap: 10px; justify-content: center; margin: 0 auto;">
+    </div>
+
+  <script>
+    (function() {
+      const container = document.getElementById('rubiks-grid');
+      
+      // The exact layout mapped from the permutation cycles
+      const faces = [
+        { name: 'Up (U)', col: 2, row: 1, bg: '#0046ad', color: '#fff', nums: [1,2,3,4,5,6,7,8,9] },
+        { name: 'Left (L)', col: 1, row: 2, bg: '#ff8a00', color: '#000', nums: [10,11,12,19,20,21,28,29,30] },
+        { name: 'Front (F)', col: 2, row: 2, bg: '#ffffff', color: '#000', nums: [13,14,15,22,23,24,31,32,33] },
+        { name: 'Right (R)', col: 3, row: 2, bg: '#b71234', color: '#fff', nums: [16,17,18,25,26,27,34,35,36] },
+        { name: 'Down (D)', col: 2, row: 3, bg: '#009b48', color: '#fff', nums: [37,38,39,40,41,42,43,44,45] },
+        { name: 'Back (B)', col: 2, row: 4, bg: '#ffd500', color: '#000', nums: [46,47,48,49,50,51,52,53,54] } 
+      ];
+
+      faces.forEach(face => {
+        // Wrapper to hold both the label and the 3x3 face
+        const wrapper = document.createElement('div');
+        wrapper.style.gridColumn = face.col;
+        wrapper.style.gridRow = face.row;
+        wrapper.style.display = 'flex';
+        wrapper.style.flexDirection = 'column';
+        wrapper.style.alignItems = 'center';
+
+        // Face Label
+        const label = document.createElement('div');
+        label.innerText = face.name;
+        label.style.fontSize = '13px';
+        label.style.fontWeight = 'bold';
+        label.style.color = '#555';
+        label.style.marginBottom = '6px';
+        wrapper.appendChild(label);
+
+        // The 3x3 Grid for the stickers
+        const faceDiv = document.createElement('div');
+        faceDiv.style.display = 'grid';
+        faceDiv.style.gridTemplateColumns = 'repeat(3, 1fr)';
+        faceDiv.style.gridTemplateRows = 'repeat(3, 1fr)';
+        faceDiv.style.gap = '2px';
+        faceDiv.style.background = '#222'; // Acts as the black plastic border
+        faceDiv.style.border = '3px solid #222';
+        faceDiv.style.borderRadius = '4px';
+        faceDiv.style.width = '100%';
+        faceDiv.style.aspectRatio = '1 / 1';
+        faceDiv.style.boxSizing = 'border-box';
+
+        // Populate the 9 stickers
+        face.nums.forEach(num => {
+          const sticker = document.createElement('div');
+          sticker.style.background = face.bg;
+          sticker.style.color = face.color;
+          sticker.style.display = 'flex';
+          sticker.style.justifyContent = 'center';
+          sticker.style.alignItems = 'center';
+          sticker.style.fontSize = '14px';
+          sticker.style.fontWeight = 'bold';
+          sticker.style.userSelect = 'none';
+          sticker.innerText = num;
+          faceDiv.appendChild(sticker);
+        });
+
+        wrapper.appendChild(faceDiv);
+        container.appendChild(wrapper);
+      });
+    })();
+  </script>
+</div>
+
 ## Context
 
 Non-commutative gaussian elimination (which I will refer to as NCGE from here on out) was taught to us in the beginning of "groups, rings and fields" (aka MAT347). We were introduced to the problem like so: consider a standard 3 x 3 x 3 Rubik's Cube. Label each sticker on the cube by the natural numbers from 1 to 54. Now, consider a group $G = \langle g_1, g_2, g_3, g_4, g_5, g_6 \rangle$, where each of the six generators constitutes one of the six 90 degree turns that are on unique axes. As we can express each $g_i$ as a cycle of natural numbers (for example, turning the white face 90 degrees clockwise would be expressed as (13, 15, 33, 31)(14, 24, 32, 22)(7, 16, 39, 30)(8, 25, 38, 21)(9, 34, 37, 12)), each $g_i$ is a member of the permutation group $S_54$.
