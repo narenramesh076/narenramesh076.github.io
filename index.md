@@ -8,4 +8,4 @@ I'm also a speedcuber! Check out my officially recognized results [here](https:/
 
 Click [here](./fav-proofs-ideas.html) to see some of my favorite proofs/ideas from courses I have taken at the University of Toronto.
 
-*latest update: added section on finding the order of the generated group to the NCGE page; this can be found [here](./ncge.html)*
+*latest update (28/05/2026): added section on finding the order of the generated group to the NCGE page; this can be found [here](./ncge.html)*
