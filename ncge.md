@@ -306,4 +306,58 @@ Thus, the feeding test is both necessary and sufficient for membership in the Ru
   </script>
 </div>
 
+## Taking it further (my personal additions/interests)
+
+### The order of the group $G$
+
+I will start with something fairly simple, that being finding how many elements the group $G = \langle g_1, g_2, g_3, g_4, g_5, g_6 \rangle$ has. Although I did not state this as an objective in the initial sections, I touched upon it being an unknown. Conveniently, the NCGE process gives us a simple way of finding the order of $G$. If we add up the number of filled boxes in each column, and multiply the totals for each column together, we get $\|G\|$.
+
+Well, why is this the case? The answer lies in a concept that could be called the "stabilizer chain", although it really relies on the more commonly known "orbit-stabilizer theorem".
+
+Let $G_1 = G$ be the entire group. Now, define $G_2$ as the subgroup of $G_1$ containing all permutations that fix the number 1 in its place (in other words, $\sigma(1) = 1$). Next, define $G_3$ as the subgroup of $G_2$ that also fixes 2 (a quick justification for these being subgroups - they are trivially subsets, and satisfy the subgroup tests since composition and inverse will both fix the same elements).
+
+Continuing this process, let $G_i$ be the subgroup of elements in $G$ that fix all numbers from 1 to $i - 1$. This creates a nested chain of subgroups until we eventually reach the identity element (or trivial subgroup that fixes every number from 1 to 54):
+
+$$
+G = G_1 \geq G_2 \geq G_3 \geq \dots \geq G_{54} = \{e\}
+$$
+
+Having established this, we can now use the orbit-stabilizer theorem. For the purpose of recall (partially so I get this right as well haha), if a group $H$ acts on a set, then for any element $x$ in that set:
+
+$$
+|H| = |\text{Orbit}_H(x)| \times |\text{Stabilizer}_H(x)|
+$$
+
+Applying this to the subgroup $G_i$ acting on the number $i$:
+
+- The stabilizer of $i$ in $G_i$ is the set of elements that fix $1, \dots, i - 1$ and also fix $i$. This is the same as the next subgroup in the chain defined above: $G_{i + 1}$.
+- The orbit of $i$ under $G_i$, which we can call $\text{Orb}_{G_i}(i)$, is the set of all possible destinations $j$ that $i$ can be sent to by elements of $G_i$.
+
+Substituting this into the orbit-stabilize equation gives us the following recursive formula:
+
+$$
+|G_i| = |\text{Orb}_{G_i}(i)| \times |G_{i + 1}|
+$$
+
+Now, we connect this to the NCGE table. To do this, we must ask the question: what is column $i$ in the table? By the NCGE rules established earlier, any permutation placed in column $i$ has $i$ as its pivot position, meaning it fixes every number strictly less than $i$. Therefore, every element in column $i$ belongs to $G_i$. In addition to this, we may say that a box $(i, j)$ is filled iff there is some permutation in $G_i$ that maps $i$ to $j$. Hence, the number of occupied boxes in column $i$ is exactly the size of the orbit $\|\text{Orb}_{G_i}(i)\|$.
+
+Using all of this, we may do the final computation as follows:
+
+$$
+\begin{aligned}
+|G_1| = |\text{Orb}_{G_1}(1)| \times |G_2|
+|G_1| = |\text{Orb}_{G_1}(1)| \times |\text{Orb}_{G_2}(2)| \times |G_3|
+\dots
+|G_1| = |\text{Orb}_{G_1}(1)| \times |\text{Orb}_{G_2}(2)| \times \dots \times |\text{Orb}_{G_{54}}(54)| \times |\{e\}|
+\end{aligned}
+$$
+
+Since the size of each orbit is the number of filled boxes in that column, $\|\{e\}\|$ is 1, and $G = G_1$, we get that:
+
+$$
+|G| = \prod_{i=1}^{54} \text{Number of occupied boxes in column i}
+$$
+
+and we are done.
+
 [back](./)
