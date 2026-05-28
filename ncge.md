@@ -344,12 +344,12 @@ Now, we connect this to the NCGE table. To do this, we must ask the question: wh
 Using all of this, we may do the final computation as follows:
 
 $$
-\begin{aligned}
-|G_1| = |\text{Orb}_{G_1}(1)| \times |G_2|
-|G_1| = |\text{Orb}_{G_1}(1)| \times |\text{Orb}_{G_2}(2)| \times |G_3|
-\dots
-|G_1| = |\text{Orb}_{G_1}(1)| \times |\text{Orb}_{G_2}(2)| \times \dots \times |\text{Orb}_{G_{54}}(54)| \times |\{e\}|
-\end{aligned}
+\begin{flalign*}
+|G_1| &= |\text{Orb}_{G_1}(1)| \times |G_2|&&\\
+|G_1| &= |\text{Orb}_{G_1}(1)| \times |\text{Orb}_{G_2}(2)| \times |G_3|&&\\
+\dots&&\\
+|G_1| &= |\text{Orb}_{G_1}(1)| \times |\text{Orb}_{G_2}(2)| \times \dots \times |\text{Orb}_{G_{54}}(54)| \times |\{e\}|&&\\
+\end{flalign*}
 $$
 
 Since the size of each orbit is the number of filled boxes in that column, $\|\{e\}\|$ is 1, and $G = G_1$, we get that:
