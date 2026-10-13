@@ -8,4 +8,6 @@ I'm also a speedcuber! Check out my officially recognized results [here](https:/
 
 Click [here](./fav-proofs-ideas.html) to see some of my favorite proofs/ideas from courses I have taken at the University of Toronto.
 
-*latest update (28/05/2026): added section on finding the order of the generated group to the NCGE page; this can be found [here](./ncge.html)*
+Click [here](./my-thoughts.html) to see some of my thoughts/ideas pertaining to my work or hobbies.
+
+*latest update (13/10/2026): on my search for [purpose](./motivation.html) (sorry if it sounds soo self-indulgent lol)*
